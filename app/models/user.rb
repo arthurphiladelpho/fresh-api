@@ -1,3 +1,4 @@
 class User < ApplicationRecord
-	enum role: [:male, :female]
+	enum gender: [:male, :female]
+	enum role: [:client, :worker]
 end
