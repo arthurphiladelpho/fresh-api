@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171022192323) do
+ActiveRecord::Schema.define(version: 20171022221535) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "neighborhood"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 20171022192323) do
     t.string   "country"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["id"], name: "index_addresses_on_id", unique: true
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "address_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_locations_on_address_id"
+    t.index ["id"], name: "index_locations_on_id", unique: true
+    t.index ["user_id"], name: "index_locations_on_user_id"
   end
 
   create_table "services", force: :cascade do |t|
@@ -31,6 +42,7 @@ ActiveRecord::Schema.define(version: 20171022192323) do
     t.integer  "cost"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["id"], name: "index_services_on_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,6 +55,7 @@ ActiveRecord::Schema.define(version: 20171022192323) do
     t.datetime "updated_at",      null: false
     t.integer  "gender"
     t.integer  "role"
+    t.index ["id"], name: "index_users_on_id", unique: true
   end
 
 end
