@@ -1,7 +1,88 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
+client = User.create({
+	first_name: "Odd",
+	last_name: "Prophet",
+	password_digest: "pass123",
+	email: "odd@prophet.com",
+	date_of_birth: "1992-6-22",
+	gender: 0,
+	role: 0 
+	
+})
+
+worker = User.create({ 
+	first_name: "Arthur",
+	last_name: "Philadelpho",
+	password_digest: "pass123",
+	email: "arthur@philadelpho.com",
+	date_of_birth: "1992-6-22",
+	gender: 0,
+	role: 1 
+})
+
+address = Address.create({ 
+	neighborhood:"Ipanema", 
+	street:"Rua Barão da Torre", 
+	number:219, 
+	complement:"casa", 
+	cep: 22411001, 
+	city:"Rio de Janeiro", 
+	state:"RJ", 
+	country:"Brasil"
+})
+
+address2 = Address.create({ 
+	neighborhood:"Ipanema", 
+	street:"Rua Redentor", 
+	number:19, 
+	complement:"apt 201", 
+	cep: 22421030, 
+	city:"Rio de Janeiro", 
+	state:"RJ", 
+	country:"Brasil"
+})
+
+
+location = Location.create({ 
+	user_id: 1,
+	address_id: 1
+})
+
+service = Service.create({
+	name: "Manicure",
+	description: "Trimming nails and removing cuticles of the hands.",
+	cost: 25
+})
+
+service2 = Service.create({
+	name: "Pedicure",
+	description: "Trimming nails and removing cuticles of the hands.",
+	cost: 25
+})
+
+appointment = Appointment.create({
+	client_id: 1,
+	worker_id: 2,
+	service_id: 1,
+	location_id: 1,
+	start_at: DateTime.parse('25th Oct 2017 16:19:09'),
+	canceled: false,
+	end_at: DateTime.parse('25th Oct 2017 16:59:49'),
+})
+
+
+client_rating = ClientRatings.create({
+	client_id: 1,
+	worker_id: 2,
+	rating: 5,
+	comments: "Client was very polite."
+})
+
+worker_rating = WorkerRatings.create({
+	client_id: 1,
+	worker_id: 2,
+	rating: 5,
+	comments: "Worker was very kind."
+})
+
+puts "Seed finished."
