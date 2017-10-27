@@ -48,6 +48,11 @@ location = Location.create({
 	address_id: 1
 })
 
+location2 = Location.create({ 
+	user_id: 2,
+	address_id: 2
+})
+
 service = Service.create({
 	name: "Manicure",
 	description: "Trimming nails and removing cuticles of the hands.",
