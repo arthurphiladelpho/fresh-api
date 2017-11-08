@@ -5,5 +5,9 @@ Rails.application.routes.draw do
 
     resources :appointments
 
+    resources :client_ratings
+
+    resources :worker_ratings
+
   end
 end
