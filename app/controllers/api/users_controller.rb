@@ -13,7 +13,7 @@ class Api::UsersController < ApiController
   		render json: user
   	else
   		render json: {errors: user.errors.full_messages},
-  		status :unprocessable_entity
+  		status: :unprocessable_entity
   	end
   end
 
@@ -30,6 +30,6 @@ class Api::UsersController < ApiController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password_digest)
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
 end

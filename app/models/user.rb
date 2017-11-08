@@ -1,4 +1,6 @@
+require "bcrypt"
 class User < ApplicationRecord
+	has_secure_password
 	enum gender: [:male, :female]
 	enum role: [:client, :worker]
 	has_many :locations
