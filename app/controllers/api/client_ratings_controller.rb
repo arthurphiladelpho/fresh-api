@@ -26,14 +26,6 @@ class Api::ClientRatingsController < ApiController
     end
   end
 
-  def update
-  	client_rating = ClientRating.find(params[:id])
-    if client_rating.update(client_rating_params)
-      render json: client_rating
-    else
-      render json: { errors: client_rating.errors.full_messages }, status: :unprocessable_entity
-    end
- 	end
 
  	private
   
