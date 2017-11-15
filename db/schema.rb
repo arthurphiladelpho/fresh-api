@@ -10,82 +10,80 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171025011500) do
-
-  create_table "addresses", force: :cascade do |t|
-    t.string   "neighborhood"
-    t.string   "street"
-    t.integer  "number"
-    t.string   "complement"
-    t.integer  "cep"
-    t.string   "city"
-    t.string   "state"
-    t.string   "country"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["id"], name: "index_addresses_on_id", unique: true
+ActiveRecord::Schema.define(version: 20_171_025_011_500) do
+  create_table 'addresses', force: :cascade do |t|
+    t.string   'neighborhood'
+    t.string   'street'
+    t.integer  'number'
+    t.string   'complement'
+    t.integer  'cep'
+    t.string   'city'
+    t.string   'state'
+    t.string   'country'
+    t.datetime 'created_at',   null: false
+    t.datetime 'updated_at',   null: false
+    t.index ['id'], name: 'index_addresses_on_id', unique: true
   end
 
-  create_table "appointments", force: :cascade do |t|
-    t.integer  "client_id"
-    t.integer  "worker_id"
-    t.integer  "service_id"
-    t.integer  "location_id"
-    t.datetime "start_at"
-    t.boolean  "canceled"
-    t.datetime "end_at"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+  create_table 'appointments', force: :cascade do |t|
+    t.integer  'client_id'
+    t.integer  'worker_id'
+    t.integer  'service_id'
+    t.integer  'location_id'
+    t.datetime 'start_at'
+    t.boolean  'canceled'
+    t.datetime 'end_at'
+    t.datetime 'created_at',  null: false
+    t.datetime 'updated_at',  null: false
   end
 
-  create_table "client_ratings", force: :cascade do |t|
-    t.integer  "client_id"
-    t.integer  "worker_id"
-    t.float    "rating"
-    t.text     "comments"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'client_ratings', force: :cascade do |t|
+    t.integer  'client_id'
+    t.integer  'worker_id'
+    t.float    'rating'
+    t.text     'comments'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "locations", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "address_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["address_id"], name: "index_locations_on_address_id"
-    t.index ["id"], name: "index_locations_on_id", unique: true
-    t.index ["user_id"], name: "index_locations_on_user_id"
+  create_table 'locations', force: :cascade do |t|
+    t.integer  'user_id'
+    t.integer  'address_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['address_id'], name: 'index_locations_on_address_id'
+    t.index ['id'], name: 'index_locations_on_id', unique: true
+    t.index ['user_id'], name: 'index_locations_on_user_id'
   end
 
-  create_table "services", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.integer  "cost"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["id"], name: "index_services_on_id", unique: true
+  create_table 'services', force: :cascade do |t|
+    t.string   'name'
+    t.text     'description'
+    t.integer  'cost'
+    t.datetime 'created_at',  null: false
+    t.datetime 'updated_at',  null: false
+    t.index ['id'], name: 'index_services_on_id', unique: true
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "password_digest"
-    t.date     "date_of_birth"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "gender"
-    t.integer  "role"
-    t.index ["id"], name: "index_users_on_id", unique: true
+  create_table 'users', force: :cascade do |t|
+    t.string   'first_name'
+    t.string   'last_name'
+    t.string   'email'
+    t.string   'password_digest'
+    t.date     'date_of_birth'
+    t.datetime 'created_at',      null: false
+    t.datetime 'updated_at',      null: false
+    t.integer  'gender'
+    t.integer  'role'
+    t.index ['id'], name: 'index_users_on_id', unique: true
   end
 
-  create_table "worker_ratings", force: :cascade do |t|
-    t.integer  "worker_id"
-    t.integer  "client_id"
-    t.float    "rating"
-    t.text     "comments"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'worker_ratings', force: :cascade do |t|
+    t.integer  'worker_id'
+    t.integer  'client_id'
+    t.float    'rating'
+    t.text     'comments'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
-
 end

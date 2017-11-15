@@ -1,5 +1,4 @@
 class Api::WorkerRatingsController < ApiController
-
   before_action :authenticated?
 
   def index
@@ -12,25 +11,21 @@ class Api::WorkerRatingsController < ApiController
     if worker_rating.save
       render json: worker_rating
     else
-      render json: {errors: worker_rating.errors.full_messages}, status: :unprocessable_entity
+      render json: { errors: worker_rating.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
   def destroy
-    begin
-      worker_rating = WorkerRating.find(params[:id])
-      worker_rating.destroy
-      render json: {}, status: :no_content
-    rescue ActiveRecord::RecordNotFound
-      render :json => {}, :status => :not_found
-    end
+    worker_rating = WorkerRating.find(params[:id])
+    worker_rating.destroy
+    render json: {}, status: :no_content
+  rescue ActiveRecord::RecordNotFound
+    render json: {}, status: :not_found
   end
 
-
   private
-  
+
   def worker_rating_params
     params.require(:worker_rating).permit(:worker_id, :client_id, :rating, :comments)
   end
-
 end

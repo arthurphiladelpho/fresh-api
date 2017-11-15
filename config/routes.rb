@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-   namespace :api, defaults: { format: :json } do
-    
+  namespace :api, defaults: { format: :json } do
     resources :users
 
     resources :appointments
@@ -8,6 +7,5 @@ Rails.application.routes.draw do
     resources :client_ratings
 
     resources :worker_ratings
-
   end
 end
