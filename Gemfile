@@ -22,6 +22,10 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'rubocop', '~> 0.51.0', require: false
 
+gem "sentry-raven", require: 'sentry-raven-without-integrations'
+
+gem 'newrelic_rpm'
+
 group :development, :test do
    gem 'rspec-rails', '~> 3.0'
  end
